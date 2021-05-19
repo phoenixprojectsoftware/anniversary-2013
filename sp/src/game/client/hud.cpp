@@ -26,6 +26,7 @@
 #include <vgui_controls/AnimationController.h>
 #include <vgui/ISurface.h>
 #include "hud_lcd.h"
+#include "version_info.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -392,6 +393,22 @@ CHud::CHud()
 //-----------------------------------------------------------------------------
 // Purpose: This is called every time the DLL is loaded
 //-----------------------------------------------------------------------------
+void PrintVersion(const CCommand &args)
+{
+	if (args.ArgC() < 1 || args.Arg(1) == "")
+	{
+		DevMsg("\n||------------------------------------------||"); // Sourced from PhoenixADM and Half-Life ADM by The Phoenix Project Software and Admer456.
+		DevMsg("\n  Client DLL build %s (%s)", gameBuild, gameDate);
+		DevMsg("\n  Source Anniversary 2013 %s", gameVersion);
+		DevMsg("\n  Author(s): %s", gameAuthors);
+		DevMsg("\n  Release type: %s", gameRelease);
+		DevMsg("\n  Repository: %s", gameRepo);
+		DevMsg("\n||------------------------------------------||");
+		return;
+	}
+
+}
+
 void CHud::Init( void )
 {
 	HOOK_HUD_MESSAGE( gHUD, ResetHUD );
@@ -469,6 +486,8 @@ void CHud::Init( void )
 	}
 
 	FreeHudTextureList( textureList );
+
+	// ConCommand version_anniversary("version_anniversary", PrintVersion, "Prints the version", 0);
 }
 
 //-----------------------------------------------------------------------------

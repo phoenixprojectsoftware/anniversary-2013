@@ -35,6 +35,7 @@
 #include "datacache/imdlcache.h"
 #include "basemultiplayerplayer.h"
 #include "voice_gamemgr.h"
+#include "version_info.h"
 
 #ifdef TF_DLL
 #include "tf_player.h"
@@ -741,6 +742,18 @@ CON_COMMAND_F( buddha, "Toggle.  Player takes damage but won't die. (Shows red c
 			Msg("Buddha Mode on...\n");
 		}
 	}
+}
+
+CON_COMMAND_F( version_anniversary, "Prints the version", FCVAR_CLIENTDLL )
+{
+	CBasePlayer *pPlayer = ToBasePlayer( UTIL_GetCommandClient() );
+	DevMsg("\n||------------------------------------------||"); // Sourced from PhoenixADM and Half-Life ADM by The Phoenix Project Software and Admer456.
+	DevMsg("\n  Client DLL build %s (%s)", gameBuild, gameDate);
+	DevMsg("\n  Source Anniversary 2013 %s", gameVersion);
+	DevMsg("\n  Author(s): %s", gameAuthors);
+	DevMsg("\n  Release type: %s", gameRelease);
+	DevMsg("\n  Repository: %s", gameRepo);
+	DevMsg("\n||------------------------------------------||");
 }
 
 
