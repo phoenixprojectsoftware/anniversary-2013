@@ -1890,7 +1890,7 @@
       <Filter>Tool Framework</Filter>
     </ClInclude>
     <ClInclude Include="version_info.h">
-      <Filter>Game Shared Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

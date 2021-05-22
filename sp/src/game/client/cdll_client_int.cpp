@@ -86,6 +86,7 @@
 #include "tier3/tier3.h"
 #include "ihudlcd.h"
 #include "toolframework_client.h"
+#include "version_info.h"
 #include "hltvcamera.h"
 #if defined( REPLAY_ENABLED )
 #include "replay/replaycamera.h"
@@ -849,6 +850,26 @@ extern IGameSystem *ViewportClientSystem();
 //-----------------------------------------------------------------------------
 ISourceVirtualReality *g_pSourceVR = NULL;
 
+static void PrintVersion()
+{
+	Msg("\n<==============================================>"); // Sourced from PhoenixADM and Half-Life ADM by The Phoenix Project Software and Admer456.
+	Msg("\n  Source Anniversary 2013 Singleplayer");
+	Msg("\n  Client DLL build %s (%s)", gameBuild, gameDate);
+	Msg("\n  Source Anniversary 2013 %s", gameVersion);
+	Msg("\n  Author(s): %s", gameAuthors);
+	Msg("\n  Release type: %s", gameRelease);
+	Msg("\n  Repository: %s", gameRepo);
+	Msg("\n<==============================================>\n");
+}
+
+CON_COMMAND(version_anniversary, "version_anniversary")
+{
+	// I would like to have this stuff separated
+	// so you can call the same function on client.dll
+	// startup or on demand using the command.
+	PrintVersion();
+}
+
 // Purpose: Called when the DLL is first loaded.
 // Input  : engineFactory - 
 // Output : int
@@ -1086,6 +1107,8 @@ int CHLClient::Init( CreateInterfaceFn appSystemFactory, CreateInterfaceFn physi
 #endif
 
 	return true;
+
+	PrintVersion();
 }
 
 bool CHLClient::ReplayInit( CreateInterfaceFn fnReplayFactory )
