@@ -1,4 +1,6 @@
-# episode1-sdk
+# Anniversary 2013
+Anniversary 2013 is the code-base for HL2A
+
 Requires Visual Studio 2013 to build.
 
 # SOURCE 1 SDK LICENSE
